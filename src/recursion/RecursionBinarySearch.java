@@ -1,22 +1,23 @@
 package recursion;
 
-import java.util.Arrays;
+import utils.Util;
+
 
 /*
- * 递归二分查找
+ * 递归二分查找  (二分查找要求序列本身已有序)
  */
 public class RecursionBinarySearch {
 	
-	static int binarySearch(int[] array, int data) {
+	//循环
+	static int binarySearch(int[] array, int key) {
 		int start = 0;
 		int end = array.length - 1;
 		int mid = -1;
 		while (start <= end) {
-			System.out.println("查找次数");
 			mid = (start + end) >>> 1;
-			if (array[mid] < data) {
+			if (array[mid] < key) {
 				start = mid + 1;
-			} else if (array[mid] > data) {
+			} else if (array[mid] > key) {
 				end = mid - 1;
 			} else {
 				return mid;
@@ -25,33 +26,40 @@ public class RecursionBinarySearch {
 		}
 		return -1;
 	}
+	
 	//递归二分查找
-	static int binarySearch4Recursion(int[] array, int data, int start, int end) {
+	static int binarySearch4Recursion(int[] array, int key, int start, int end) {
 		int mid = -1;
-		System.out.println("查找次数");
 		if (start > end) {
 			return mid;
 		}
+		
+		System.out.println("查找次数");
+		
 		mid = (start + end) >>> 1;
-		if (array[mid] < data) {
-			return binarySearch4Recursion(array, data, mid + 1, end);
-		} else if (array[mid] > data) {
-			return binarySearch4Recursion(array, data, start, mid - 1);
+		if (array[mid] < key) {
+			return binarySearch4Recursion(array, key, mid + 1, end);
+		} else if (array[mid] > key) {
+			return binarySearch4Recursion(array, key, start, mid - 1);
 		} else {
 			return mid;
 		}
 			
 	}
 	
+	
 	public static void main(String[] args) {
-		int[] ary = new int [100];
-		for (int i = 0; i < 100; i++) {
-			ary[i] = i;
+		int[] ary = new int[10];
+		for (int i = 0; i < ary.length; i++) {
+			ary[i] = i+8;
 		}
-		int key = 64;
+		Util.printArray(ary);
+		
 //		System.out.println(binarySearch(ary, key));
 //		System.out.println(Arrays.binarySearch(ary, 6));
 		
-		System.out.println(binarySearch4Recursion(ary, key, 0, ary.length -1));
+		int key = 15;
+		int keyIndex = binarySearch4Recursion(ary, key, 0, ary.length -1);
+		System.out.println("index=" + keyIndex);
 	}
 }
