@@ -1,6 +1,8 @@
 package queue;
 /*
- * 队列	后进先出，一个指针指示插入的位置，一个指针指示取出数据项的位置
+ * 队列	先进先出，一个指针指示插入的位置，一个指针指示取出数据项的位置
+ * 
+ * 实际使用时，size不是固定的，可以自动增长，如size不足，扩充一倍；内部ary复制成一个新的长度的ary
  */
 public class QueueQ<T> {
 	private int max;
@@ -22,7 +24,9 @@ public class QueueQ<T> {
 			rear = -1;
 		}
 		ary[++rear] = t;
-		nItems++;
+		if (nItems < max) {
+			nItems++;
+		}
 	}
 	//移除队头
 	public T remove() {
@@ -53,20 +57,20 @@ public class QueueQ<T> {
 	public static void main(String[] args) {
 		QueueQ<Integer> queue = new QueueQ<Integer>(3);
 		for (int i = 0; i < 5; i++) {
-			queue.insert(i);
+			queue.insert(i); //012  312 342
 			System.out.println("size:" + queue.size());
 		}
 		for (int i = 0; i < 5; i++) {
 			Integer peek = queue.peek();
-			System.out.println("peek:" + peek);
+			System.out.println("peek:" + peek); //3
 			System.out.println("size:" + queue.size());
 		}
+		System.out.println("----");
 		for (int i = 0; i < 5; i++) {
 			Integer remove = queue.remove();
 			System.out.println("remove:" + remove);
 			System.out.println("size:" + queue.size());
 		}
-		
 		System.out.println("----");
 		
 		for (int i = 5; i > 0; i--) {

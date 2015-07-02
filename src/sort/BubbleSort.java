@@ -41,7 +41,7 @@ public class BubbleSort {
 		int changeCount = 0;//交换次数
 		
 		int len = ary.length;
-		for (int j = 0; j < len; j++) {//外层固定循环次数
+		for (int j = 0; j < len - 1; j++) {//外层固定循环次数
 			for (int k = 0; k < len - 1; k++) {//内层固定循环次数
 				if (ary[k] > ary[k + 1]) {
 					ary[k] = ary[k + 1] + (ary[k + 1] = ary[k]) * 0;//一步交换
@@ -65,7 +65,7 @@ public class BubbleSort {
 		int compareCount = 0;//比较次数
 		int changeCount = 0;//交换次数
 		int len = ary.length;
-		for (int j = 0; j < len; j++) {//外层固定循环次数
+		for (int j = 0; j < len-1; j++) {//外层固定循环次数
 			for (int k = len - 1; k > j; k--) {//内层从多到少递减比较次数
 				if (ary[k] < ary[k - 1]) {
 					ary[k] = ary[k - 1] + (ary[k - 1] = ary[k]) * 0;//一步交换
