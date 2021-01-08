@@ -1,0 +1,23 @@
+trie  字典树。 多叉树
+    基于 map<k,v> 映射。 不同的语言环境，k 是不同的，需要自行定义。
+    英文环境：k 可以就是 一个 字符 character，  v 是 String，实际定义是将 v 定义成 node
+            root-node， 没有 k、v
+            26字母 做一级分叉；每个节点，若跟前面的父级链上节点能组成一个单词，该节点在单词尾时，对其进行标记
+                node.isWord = true;
+
+    查询效率跟 被查词的 长度有关  o(l)  l=词的长度。
+    添加也是跟 词的长度有关
+
+
+TreeMap 内部使用红黑树，在数据量趋于无穷大，它的整体性能比 HashMap 更好。
+在较小量级的数据上， HashMap 表现的更好
+
+
+ https://github.com/liuyubobobo/Play-with-Data-Structures/tree/master/10-Trie/08-Trie-Using-HashMap-and-Array/src
+    Trie 仍然是我们在这个课程中，内部结点使用TreeMap做映射的Trie；
+    Trie2 的内部结点中，使用HashMap做映射；
+    Trie3 的内部结点中，使用一个包含26个元素的数组做映射，这就限制了Trie3中存储的单词，只能包含小写字母。
+
+    Trie 仍然是我们在这个课程中，内部结点使用TreeMap做映射的Trie；
+    Trie2 的内部结点中，使用HashMap做映射；
+    Trie3 的内部结点中，使用一个包含26个元素的数组做映射，这就限制了Trie3中存储的单词，只能包含小写字母。
