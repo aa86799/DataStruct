@@ -32,8 +32,8 @@ public class MostWaters11 {
         int j = height.length - 1; //最后一个 索引
         while (i < j) { //左索引 < 右索引
             //相距宽度 * 左右中的最小高度 = 面积
-            int are = (j-i) * Math.min(height[i], height[j]);
-            max = Math.max(are, max);
+            int area = (j-i) * Math.min(height[i], height[j]);
+            max = Math.max(area, max);
             if (height[i] < height[j]) {
                 i++;
             } else {
