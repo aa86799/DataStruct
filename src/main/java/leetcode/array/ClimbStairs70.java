@@ -15,18 +15,18 @@ public class ClimbStairs70 {
         //3. 111, 12, 21,   3
         //4. 1111,121, 211, 112, 22 5
         //有 fibonacci 数列规律
-        int p = 0, q = 0;
+        if (n <= 0) return 0;
+        int a = 0, b = 0;
         for (int i = 1; i <= n; i++) {
             if (i == 1) {
-                p = q = i;
+                a = b = i;
             } else if (i == 2) {
-                q = i;
+                b = i;
             } else {
-                int temp = p + q;
-                p = q;
-                q = temp;
+                b = a + b;
+                a = b - a;
             }
         }
-        return q;
+        return b;
     }
 }
