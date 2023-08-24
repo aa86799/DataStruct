@@ -81,9 +81,11 @@ public class C_InsertSort {
 //                ary[j + 1] = ary[j];
 //            }
             //或
-            for (int j = i; j > l; j--) {
-                ary[j] = ary[j-1];
-            }
+//            for (int j = i; j > l; j--) {
+//                ary[j] = ary[j-1];
+//            }
+            // 从 l 处复制 i-l 个，到 l+1处
+            if (i - l >= 0) System.arraycopy(ary, l, ary, l + 1, i - l);
             ary[l] = e;
 
         }

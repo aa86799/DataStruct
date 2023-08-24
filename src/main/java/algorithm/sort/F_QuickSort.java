@@ -24,7 +24,7 @@ public class F_QuickSort {
 
         F_QuickSort quickSort = new F_QuickSort();
         quickSort.sort1(ary);//处理有序时，会溢出
-        quickSort.sort2(ary2);
+        quickSort.sort2(ary2); // 随机快速排序
         quickSort.sort3(ary3);
         quickSort.sort4(ary4);
         System.out.println(Util.isAsc(ary));
@@ -37,7 +37,6 @@ public class F_QuickSort {
 //        System.out.println(Arrays.toString(ary2));
     }
 
-    int xxxx;
     public void sort1(int[] ary) {
         long startTime = System.nanoTime();
 
@@ -103,7 +102,7 @@ public class F_QuickSort {
 
     }
 
-    private Random random = new Random();
+    private final Random random = new Random();
 
     private int partition2(int[] ary, int l, int r) {
         //[l,r]间的随机索引

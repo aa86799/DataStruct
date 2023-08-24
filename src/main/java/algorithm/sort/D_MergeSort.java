@@ -27,9 +27,9 @@ public class D_MergeSort {
         System.out.println(Util.isAsc(ary2));
         System.out.println(Util.isAsc(ary3));
 
-        System.out.println(Arrays.toString(ary));
-        System.out.println(Arrays.toString(ary2));
-        System.out.println(Arrays.toString(ary3));
+//        System.out.println(Arrays.toString(ary));
+//        System.out.println(Arrays.toString(ary2));
+//        System.out.println(Arrays.toString(ary3));
     }
 
     /*
@@ -47,6 +47,10 @@ public class D_MergeSort {
         System.out.println("total time:" + ((System.nanoTime() - startTime) / 1.0e9));
     }
 
+    /* 用到递归，所以是由一个子方法来实现
+        归并排序的递推公式:
+            merge_sort(l…r) = merge(merge_sort(l,mid), merge_sort(mid+1,r))
+     */
     private void mergeSort1(int[] ary, int start, int end) {
         if (start >= end) {
             return;
@@ -58,7 +62,7 @@ public class D_MergeSort {
         //直接归并
 //        merge(ary, start, mid, end);
 
-        //先比较左右子序，左边的最大值 比 右边的最小值
+        //先比较左右子序，左边的最大值 比 右边的最小值。若结果是小于，则已是升序；反之，需要归并
         if (ary[mid] > ary[mid + 1]) {//[start,end]是否是降序的，是就调用 merge 合并成升序
             merge(ary, start, mid, end);
         }
@@ -97,6 +101,8 @@ public class D_MergeSort {
         }
     }
 
+    // 左右两个子序列都是有序的，
+    // 声明三个值，分别表示 结果集的 开始索引、左序列的开始索引、右序列的开始索引： kij
     private void merge(int[] ary, int start, int mid, int end) {
         //声明临时数组，存储原数组中 [start,end]的数据
         int[] res = new int[end - start + 1];
@@ -114,10 +120,10 @@ public class D_MergeSort {
             } else if (i > mid) {//左边序列访问完了
                 ary[k] = res[j - start];
                 j++;
-            } else if (res[i - start] < res[j - start]) {//左边小于右边
+            } else if (res[i - start] < res[j - start]) {//左边小于右边，关键的比较
                 ary[k] = res[i - start];
                 i++;
-            } else {//左边大于右边
+            } else {//左边大于右边，关键的比较
                 ary[k] = res[j - start];
                 j++;
             }
@@ -149,7 +155,7 @@ public class D_MergeSort {
          *      j=2,  要将 [2,3]的元素进行归并
          *      j=4,  要将 [4,5]的元素进行归并
          *      j=6,  要将 [6,7]的元素进行归并
-         *      归并参数： start=j; end=j+1 || j+ 2i-1 <==> j+i+i-1;
+         *      归并参数： start=j; end=j+1 || (j+ 2i-1 <==> j+i+i-1);
          *              mid =
          *  i=8,  j=[0,16,32,48,64..]
          *      j=0, [0,15]

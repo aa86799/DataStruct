@@ -15,7 +15,7 @@ public class E_PartitionSort {
 
     public static void main(String[] args) {
         int[] ary = Util.buildRandomArray(20000 );
-        System.out.println(Arrays.toString(ary));
+//        System.out.println(Arrays.toString(ary));
 
         E_PartitionSort partitionSort = new E_PartitionSort();
         partitionSort.sort(ary, 10);

@@ -4,7 +4,7 @@ package leetcode.tree;
  * desc:
  * author:  stone
  * email:   aa86799@163.com
- * blog :   https://stone.blog.csdn.net
+ * blog :   <a href="https://stone.blog.csdn.net">匆忙拥挤repeat</a>
  * time:    2020/9/29 12:07
  */
 public class BinaryTreeMaxPathSum124 {

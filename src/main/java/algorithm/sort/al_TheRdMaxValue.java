@@ -91,6 +91,6 @@ public class al_TheRdMaxValue {
             }
         }
         Util.swap(ary, l, j);
-        return j;
+        return j; // 在顺序序列中的 左索引； 第 n 大的索引，就是 n-1；当 j == n-1 即是目标
     }
 }
