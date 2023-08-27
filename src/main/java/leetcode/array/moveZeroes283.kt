@@ -25,11 +25,25 @@ class Solution {
     //时间复杂度：O(n)
     private fun solutionA(nums: IntArray) {
         var j = 0 // 指向0数可能在的位置
+        for (i in nums.indices) {
+            if (nums[i] != 0) {
+                if (i != j) { // 不等于时，j 是指向一个0元素的
+                    nums[j] = nums[i] // 把后面赋给了前面
+                    nums[i] = 0 // 不使用交换，直接赋0
+                }
+                j++ // 交换之后，j可能指向0元素
+            }
+        }
+    }
+
+    //时间复杂度：O(n)
+    private fun solutionB(nums: IntArray) {
+        var j = 0 // 指向0数可能在的位置
 //        for (i in 0 until nums.size) {
         for (i in nums.indices) {
             if (nums[i] != 0) {
                 swap(nums, i, j)
-                j++
+                j++ // 交换之后，j可能指向0元素
             }
         }
     }
@@ -46,10 +60,12 @@ class Solution {
      *  1 0 0 2
      *  1 0 0 2     i=2, j= 1
      *  1 2 0 2     i=3,j=2
+     *
+     *  2*O(n)
      */
-    private fun solutionB(nums: IntArray) {
+    private fun solutionC(nums: IntArray) {
         var j = 0 // 指向0数可能在的位置，首位置可能非0
-        for (i in 0 until nums.size) {
+        for (i in nums.indices) {
             if (nums[i] != 0) {
                 nums[j++] = nums[i] // 非0数，赋给可能为0的位置
             }

@@ -90,4 +90,25 @@ public class ClimbStairs70 {
         }
         return b;
     }
+
+    public int climbStairs2(int n) {
+        if (n <= 0) return 0;
+        if (n <= 2) return n;
+        int a = 1; int b = 2;
+        int i = 2;
+        while (i < n) {
+            b = a + b;
+            a = b - a;
+            i++;
+        }
+        return b;
+    }
+
+    // 递归
+    public int climbStairs3(int n) {
+         if (n <= 0) return 0;
+         if (n <= 2) return n;
+         return climbStairs3(n-1) + climbStairs3(n-2);
+    }
+
 }
